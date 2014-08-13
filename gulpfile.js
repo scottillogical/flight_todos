@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var refresh = require('gulp-livereload');
+var connect = require('gulp-connect');
 var livereload = require('tiny-lr');
 var server = livereload();
 
@@ -30,3 +31,35 @@ gulp.task('default', function () {
     gulp.run('js');
   });
 });
+
+
+//new stuff here
+
+//gulp.task('server', function() {
+  //var connect = require('connect');
+  //var serveStatic = require('serve-static');
+  //var send = require('send');
+  //var fs = require('fs');
+
+  //var app = connect()
+    //.use(require('connect-livereload')({
+      //port: 35729
+    //}))
+    //.use(serveStatic('app'))
+    //.use(function(req, res) {
+      //send(req, 'app/index.html').pipe(res);
+    //});
+
+  //var options = {
+    //key: fs.readFileSync('certs/server.key'),
+    //cert: fs.readFileSync('certs/server.crt'),
+    //ca: fs.readFileSync('certs/ca.crt')
+  //};
+
+  //require('https').createServer(options, app)
+    //.listen(3443)
+    //.on('listening', function() {
+      //console.log('Started connect web server on https://localhost:3443');
+    //});
+//});
+

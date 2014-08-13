@@ -5,8 +5,8 @@ define(function (require) {
   /**
    * Module dependencies
    */
-
-  // var MyComponent = require('component/my_component');
+  var AddTask = require('component/add_task');
+  var TaskData = require('component/task_data');
 
   /**
    * Module exports
@@ -19,7 +19,8 @@ define(function (require) {
    */
 
   function initialize() {
-    // MyComponent.attachTo(document);
+    AddTask.attachTo('.js-add-task');
+    TaskData.attachTo(document);
   }
 
 });

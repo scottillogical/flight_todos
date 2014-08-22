@@ -5,6 +5,7 @@ define(function (require) {
   /**
    * Module dependencies
    */
+  var ListTasks = require('component/list_tasks');
   var AddTask = require('component/add_task');
   var TaskData = require('component/task_data');
 
@@ -21,6 +22,7 @@ define(function (require) {
   function initialize() {
     AddTask.attachTo('.js-add-task');
     TaskData.attachTo(document);
+    ListTasks.attachTo(document);
   }
 
 });

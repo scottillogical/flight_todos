@@ -3,13 +3,14 @@ define(function (require) {
   var defineComponent = require('flight/lib/component');
   var withStorage = require('component/with_storage');
 
-  return defineComponent(taskData);
+  return defineComponent(taskData, withStorage);
 
   function taskData() {
     this.handleUiAddTask = function(e, data) {
       this.tasks = this.tasks || {};
       data.task.id = Date.now();
       this.tasks[data.task.id] = data.task;
+      this.write('tasks', this.tasks);
       this.trigger('dataTaskAdded', data);
     };
 
@@ -26,7 +27,6 @@ define(function (require) {
       }, this);
       this.trigger('dataTasks', {tasks: tasks});
     };
-
 
     this.handleUiTaskCompleted = function(e, data) {
       var task = this.tasks[data.task.id];
@@ -48,7 +48,11 @@ define(function (require) {
       this.on('uiNeedsTask', this.handleUiNeedsTask);
       this.on('uiNeedsTasks', this.handleUiNeedsTasks);
       this.on('uiTaskCompleted', this.handleUiTaskCompleted);
-      this.trigger('uiAddTask', {task: {description: 'default task'}});
+
+      if(this.read('tasks')) {
+        this.tasks = this.read('tasks');
+      }
+      this.tasks = this.tasks || {};
     });
   }
 });

@@ -11,7 +11,9 @@ define(function (require) {
     });
 
     this.appendTask = function(task) {
-      this.select('taskListSelector').append(task.description);
+      this.select('taskListSelector').append(
+        "<li class='task'>" + task.description + "</li>"
+      );
     };
 
     this.handleDataTasks = function(e, data) {
@@ -20,8 +22,8 @@ define(function (require) {
       }, this);
     };
 
-    this.handleDataTaskAdded = function(task) {
-      this.appendTask(task);
+    this.handleDataTaskAdded = function(e, data) {
+      this.appendTask(data.task);
     };
 
     this.after('initialize', function () {
